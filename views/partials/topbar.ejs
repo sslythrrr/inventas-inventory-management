@@ -6,7 +6,7 @@
         <h4 class="h4 mb-0 text-gray-800 d-none d-sm-inline-block" style="font-weight: 700;">
             <% if (locals.userRole === 'atasan') { %>
                 <%= locals.url.includes('/atasan/lelang') ? 'MANAJEMEN LELANG ATASAN' : locals.url.includes('/dashboard') ? 'DASHBOARD' : locals.url.includes('/barang') ? 'DATA BARANG' :
-                    locals.url.includes('/pemilik') ? 'PEMILIK BARANG'
+                    locals.url.includes('/pemilik') ? 'PENANGGUNG JAWAB'
                     : locals.url.includes('/mutasi') ? 'MUTASI BARANG' : locals.url.includes('/karyawan')
                     ? 'DAFTAR KARYAWAN' : locals.url.includes('/penjualan')
                     ? 'DATA PENJUALAN' : locals.url.includes('/jual')
@@ -14,7 +14,7 @@
                     ? 'LOG AKTIVITAS' : 'DASHBOARD' %>
             <% } else { %>
                 <%= locals.url.includes('/dashboard') ? 'DASHBOARD' : locals.url.includes('/barang') ? 'DATA BARANG' :
-                    locals.url.includes('/pemilik') ? 'PEMILIK BARANG' : locals.url.includes('/lelang') ? 'MANAJEMEN LELANG'
+                    locals.url.includes('/pemilik') ? 'PENANGGUNG JAWAB' : locals.url.includes('/lelang') ? 'MANAJEMEN LELANG'
                     : locals.url.includes('/mutasi') ? 'MUTASI BARANG' : locals.url.includes('/karyawan')
                     ? 'DAFTAR KARYAWAN' : locals.url.includes('/penjualan')
                     ? 'DATA PENJUALAN' : locals.url.includes('/jual')

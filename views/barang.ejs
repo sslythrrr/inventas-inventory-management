@@ -116,7 +116,7 @@
                                                             </th>
                                                             <th
                                                                 class="px-4 py-3 text-sm font-semibold tracking-wide text-left">
-                                                                Pemilik
+                                                                Penanggung Jawab
                                                             </th>
                                                             <th
                                                                 class="px-4 py-3 text-sm font-semibold tracking-wide text-center">
@@ -409,9 +409,9 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <label class="form-label">Pemilik</label>
+                                                        <label class="form-label">Penanggung Jawab</label>
                                                         <select class="form-select" name="id_karyawan" required>
-                                                            <option value="">Pilih Pemilik</option>
+                                                            <option value="">Penanggung Jawab</option>
                                                             <% karyawan.forEach(function(k) { %>
                                                                 <option value="<%= k.id_karyawan %>">
                                                                     <%= k.nama_karyawan %>
@@ -449,7 +449,7 @@
                                                 <dd class="col-sm-8" id="detailKategori"></dd>
                                                 <dt class="col-sm-4">Lokasi</dt>
                                                 <dd class="col-sm-8" id="detailLokasi"></dd>
-                                                <dt class="col-sm-4">Pemilik</dt>
+                                                <dt class="col-sm-4">Penanggung Jawab</dt>
                                                 <dd class="col-sm-8" id="detailPemilik"></dd>
                                                 <dt class="col-sm-4">Status</dt>
                                                 <dd class="col-sm-8" id="detailStatus"></dd>
@@ -558,7 +558,7 @@
                                                                     </option>
                                                                     <% }); %>
                                                             </select>
-                                                            <label for="pemilikBarang">Pemilik</label>
+                                                            <label for="pemilikBarang">Penanggung Jawab</label>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">

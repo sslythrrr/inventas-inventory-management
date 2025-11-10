@@ -750,7 +750,7 @@ const intentStopwords = {
         'itu', 'ini', 'yang', 'apa', 'ya', 'deh', 'gan',
         'bos', 'min', 'kak', 'bang', 'mas', 'mbak', 'pak', 'bu',
         'coba', 'tolong', 'kasih', 'tau', 'tahu', 'info', 'informasi',
-        'liat', 'lihat', 'tampilkan', 'tampilin', 'show', 'list', 'daftar'
+        'liat', 'lihat', 'tampilkan', 'tampilin', 'show', 'list', 'daftar', 'cari'
     ],
     'lokasi_barang': [
         'di', 'mana', 'dimana', 'dmn', 'lokasi', 'ada', 'berada',
@@ -760,7 +760,7 @@ const intentStopwords = {
         'yang', 'apa', 'ya', 'deh', 'gan', 'bos', 'min',
         'kak', 'bang', 'mas', 'mbak', 'pak', 'bu',
         'coba', 'tolong', 'kasih', 'tau', 'tahu', 'info',
-        'liat', 'lihat', 'tampilkan', 'tampilin'
+        'liat', 'lihat', 'tampilkan', 'tampilin', 'cari'
     ],
     'jumlah_barang': [
         'ada', 'berapa', 'brp', 'jumlah', 'banyak', 'byk',
@@ -779,7 +779,7 @@ const intentStopwords = {
         'kah', 'sih', 'dong', 'yak', 'itu', 'ini', 'yang',
         'ya', 'deh', 'gan', 'bos', 'min', 'kak', 'bang',
         'mas', 'mbak', 'pak', 'bu',
-        'coba', 'tolong', 'kasih', 'tau', 'tahu'
+        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'cari'
     ],
     'kepemilikan_barang': [
         'siapa', 'pemilik', 'dimiliki', 'punya', 'yang', 'milik',
@@ -788,7 +788,7 @@ const intentStopwords = {
         'dong', 'yak', 'itu', 'ini', 'apa', 'ya', 'deh',
         'gan', 'bos', 'min', 'kak', 'bang', 'mas', 'mbak',
         'pak', 'bu', 'oleh',
-        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'barang'
+        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'barang', 'cari'
     ]
 };
 

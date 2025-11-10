@@ -59,7 +59,7 @@ router.get('/print',requireLogin, async (req, res) => {
             'KATEGORI',
             'LOKASI',
             'HARGA',
-            'PEMILIK'
+            'PENANGGUNG JAWAB'
         ];
 
         const columnWidths = [5, 20, 65, 20, 20, 25, 25];
