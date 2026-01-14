@@ -363,7 +363,7 @@ async function handleAggregation(queryData) {
     let itemName = entity;
 
     if (entity && entity.length >= 3) {
-        const fuzzyResults = await fuzzySearchBarang(entity, 65);
+        const fuzzyResults = await fuzzySearchBarang(entity, 55);
         if (fuzzyResults.length > 0) {
             itemName = fuzzyResults[0].nama;
         }
@@ -420,7 +420,7 @@ async function handleRanking(queryData) {
     let itemName = entity;
 
     if (entity && entity.length >= 3) {
-        const fuzzyResults = await fuzzySearchBarang(entity, 65);
+        const fuzzyResults = await fuzzySearchBarang(entity, 55);
         if (fuzzyResults.length > 0) {
             itemName = fuzzyResults[0].nama;
         }
@@ -760,7 +760,7 @@ const intentStopwords = {
         'yang', 'apa', 'ya', 'deh', 'gan', 'bos', 'min',
         'kak', 'bang', 'mas', 'mbak', 'pak', 'bu',
         'coba', 'tolong', 'kasih', 'tau', 'tahu', 'info',
-        'liat', 'lihat', 'tampilkan', 'tampilin', 'cari'
+        'liat', 'lihat', 'tampilkan', 'tampilin', 'cari','?'
     ],
     'jumlah_barang': [
         'ada', 'berapa', 'brp', 'jumlah', 'banyak', 'byk',
@@ -770,7 +770,7 @@ const intentStopwords = {
         'itu', 'ini', 'yang', 'apa', 'ya', 'deh', 'gan',
         'bos', 'min', 'kak', 'bang', 'mas', 'mbak', 'pak', 'bu',
         'coba', 'tolong', 'kasih', 'tau', 'tahu',
-        'liat', 'lihat', 'tampilkan', 'tampilin'
+        'liat', 'lihat', 'tampilkan', 'tampilin','?'
     ],
     'status_barang': [
         'status', 'kondisi', 'apa', 'bagaimana', 'gmn', 'gimana',
@@ -779,7 +779,7 @@ const intentStopwords = {
         'kah', 'sih', 'dong', 'yak', 'itu', 'ini', 'yang',
         'ya', 'deh', 'gan', 'bos', 'min', 'kak', 'bang',
         'mas', 'mbak', 'pak', 'bu',
-        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'cari'
+        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'cari','?'
     ],
     'kepemilikan_barang': [
         'siapa', 'pemilik', 'dimiliki', 'punya', 'yang', 'milik',
@@ -788,7 +788,7 @@ const intentStopwords = {
         'dong', 'yak', 'itu', 'ini', 'apa', 'ya', 'deh',
         'gan', 'bos', 'min', 'kak', 'bang', 'mas', 'mbak',
         'pak', 'bu', 'oleh',
-        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'barang', 'cari'
+        'coba', 'tolong', 'kasih', 'tau', 'tahu', 'barang', 'cari','?','penanggungjawab', 'pj', 'pjnya','penanggung jawab'
     ]
 };
 
@@ -811,7 +811,7 @@ const logger = {
     },
     fuzzyResults(matches) {
         if (matches.length === 0) {
-            console.log(`Fuzzy: Tidak ada (threshold: 65)`);
+            console.log(`Fuzzy: Tidak ada (threshold: 55)`);
         } else {
             console.log(`Fuzzy: ${matches.length} ditemukan`);
             matches.slice(0, 3).forEach(m => {
@@ -1211,7 +1211,7 @@ router.post('/chat', async (req, res) => {
                 const extracted = extractItemFromMessage(message, 'kepemilikan_barang');
 
                 if (extracted.length >= 3) {
-                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 55);
 
                     if (fuzzyResults.length > 0) {
                         itemName = fuzzyResults[0].nama;
@@ -1266,7 +1266,7 @@ router.post('/chat', async (req, res) => {
                     // Fuzzy Match
                     logger.fuzzyAttempt();
 
-                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 55);
                     logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
@@ -1329,7 +1329,7 @@ router.post('/chat', async (req, res) => {
             if (!itemName) {
                 const extracted = extractItemFromMessage(message, 'harga_barang');
                 if (extracted.length >= 3) {
-                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 55);
                     if (fuzzyResults.length > 0) {
                         itemName = fuzzyResults[0].nama;
                     }
@@ -1435,7 +1435,7 @@ router.post('/chat', async (req, res) => {
                     // Fuzzy Match
                     logger.fuzzyAttempt();
 
-                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 55);
                     logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
@@ -1567,7 +1567,7 @@ router.post('/chat', async (req, res) => {
                 const extracted = extractItemFromMessage(message, 'jumlah_barang');
 
                 if (extracted.length >= 3) {
-                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 55);
 
                     if (fuzzyResults.length > 0) {
                         itemName = fuzzyResults[0].nama;
@@ -1653,7 +1653,7 @@ router.post('/chat', async (req, res) => {
                     // Fuzzy Match
                     logger.fuzzyAttempt();
 
-                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 55);
                     logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
@@ -1717,7 +1717,7 @@ router.post('/chat', async (req, res) => {
                 const extracted = extractItemFromMessage(message, 'lokasi_barang');
 
                 if (extracted.length >= 3) {
-                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 55);
 
                     if (fuzzyResults.length > 0) {
                         itemName = fuzzyResults[0].nama;
@@ -1750,7 +1750,7 @@ router.post('/chat', async (req, res) => {
                     // Fuzzy Match
                     logger.fuzzyAttempt();
 
-                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 55);
                     logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
@@ -1814,7 +1814,7 @@ router.post('/chat', async (req, res) => {
                 const extracted = extractItemFromMessage(message, 'status_barang');
 
                 if (extracted.length >= 3) {
-                    const fuzzyResults = await fuzzySearchBarang(extracted, 65);
+                    const fuzzyResults = await fuzzySearchBarang(extracted, 55);
 
                     if (fuzzyResults.length > 0) {
                         itemName = fuzzyResults[0].nama;
@@ -1847,7 +1847,7 @@ router.post('/chat', async (req, res) => {
                     // Fuzzy Match
                     logger.fuzzyAttempt();
 
-                    const fuzzyResults = await fuzzySearchBarang(itemName, 65);
+                    const fuzzyResults = await fuzzySearchBarang(itemName, 55);
                     logger.fuzzyResults(fuzzyResults);
 
                     if (fuzzyResults.length > 0) {
@@ -1957,7 +1957,7 @@ router.post('/chat', async (req, res) => {
             try {
         // Fuzzy Match
         logger.fuzzyAttempt();
-                const fuzzyResults = await fuzzySearchBarang(message, 65);
+                const fuzzyResults = await fuzzySearchBarang(message, 55);
                 logger.fuzzyResults(fuzzyResults);
 
                 if (fuzzyResults.length > 0) {

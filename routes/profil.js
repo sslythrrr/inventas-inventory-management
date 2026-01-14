@@ -14,7 +14,6 @@ const { requireLogin } = require('../routes/auth.js');
 router.get('/', requireLogin, async (req, res) => {
     try {
         if (req.session.atasanEmail) {
-            // Handle atasan profile
             const [atasanRows] = await db.query(
                 'SELECT id_atasan, nama_atasan, email FROM atasan WHERE email = ?',
                 [req.session.atasanEmail]
@@ -40,7 +39,6 @@ router.get('/', requireLogin, async (req, res) => {
                 userRole: 'atasan'
             });
         } else {
-            // Handle admin profile
             const [adminRows] = await db.query(
                 'SELECT id_admin, username, email, foto FROM Admin WHERE email = ?',
                 [req.session.email]
@@ -73,7 +71,6 @@ router.get('/', requireLogin, async (req, res) => {
 });
 
 router.post('/update-profil', requireLogin, async (req, res) => {
-    // Check if user is atasan
     if (req.session.atasanEmail) {
         return res.status(403).json({ message: 'Profil atasan tidak dapat diubah melalui interface ini' });
     }
@@ -159,7 +156,6 @@ router.post('/update-profil', requireLogin, async (req, res) => {
 });
 
 router.post('/update-photo', requireLogin, upload.single('photo'), async (req, res) => {
-    // Check if user is atasan
     if (req.session.atasanEmail) {
         return res.status(403).json({ message: 'Foto profil atasan tidak dapat diubah melalui interface ini' });
     }

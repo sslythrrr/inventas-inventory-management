@@ -238,12 +238,10 @@ if (window.location.pathname === "/karyawan") {
 
                         $('table tbody').html(tableHTML);
 
-                        // Update info pagination
                         $('#dataTable_info').text(
                             `Menampilkan ${(currentPage - 1) * response.limit + 1} - ${Math.min(currentPage * response.limit, response.totalData)} dari ${response.totalData}`
                         );
 
-                        // Update pagination
                         updatePagination(response.currentPage, response.totalPages);
                     }
                 },

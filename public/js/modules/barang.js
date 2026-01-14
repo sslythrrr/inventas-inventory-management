@@ -320,8 +320,6 @@ if (window.location.pathname === "/barang") {
     const formHandler = new BarangFormHandler();
 
     function setupCleave() {
-        // Cleave is already initialized in BarangFormHandler
-        // This function is kept for backward compatibility
     }
 
     const role = "<%= role %>";
@@ -647,9 +645,8 @@ if (window.location.pathname === "/barang") {
 
         const currentPage = parseInt(paginationData.currentPage) || 1;
         const totalPages = Math.max(1, parseInt(paginationData.totalPages) || 1);
-        const delta = 2; // range kiri/kanan current page
+        const delta = 2;
 
-        // build compact range with ellipsis
         const range = [];
         for (let i = 1; i <= totalPages; i++) {
             if (i === 1 || i === totalPages || (i >= currentPage - delta && i <= currentPage + delta)) {
@@ -668,7 +665,6 @@ if (window.location.pathname === "/barang") {
         }
 
         containers.forEach(paginationContainer => {
-            // build HTML
             let html = '';
 
             html += `<li class="page-item ${currentPage === 1 ? 'disabled' : ''}">
@@ -689,10 +685,8 @@ if (window.location.pathname === "/barang") {
                     <a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>
                  </li>`;
 
-            // replace markup
             paginationContainer.innerHTML = html;
 
-            // remove any previous onclick handlers to avoid duplicates, then attach one delegated handler
             paginationContainer.onclick = function (e) {
                 const a = e.target.closest('a.page-link');
                 if (!a) return;
@@ -701,21 +695,17 @@ if (window.location.pathname === "/barang") {
                 const page = parseInt(a.dataset.page);
                 if (isNaN(page) || page < 1 || page > totalPages) return;
 
-                // visual feedback: update active immediately
                 paginationContainer.querySelectorAll('.page-item').forEach(li => li.classList.remove('active'));
                 const parentLi = a.closest('.page-item');
                 if (parentLi) parentLi.classList.add('active');
 
-                // update URL and reload table
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.set('page', page);
                 history.pushState({}, '', `${window.location.pathname}?${urlParams.toString()}`);
 
-                // call table refresh (your existing function)
                 if (typeof updateTable === 'function') {
                     updateTable();
                 } else {
-                    // fallback: force a reload if updateTable not present
                     window.location.href = `${window.location.pathname}?${urlParams.toString()}`;
                 }
             };
@@ -854,7 +844,6 @@ if (window.location.pathname === "/barang") {
         sortTable('waktu_masuk', order);
     }
 
-    // Handler untuk tombol detail (khusus atasan)
     $(document).on('click', '.detail-barang-btn', function () {
         const idBarang = $(this).data('id');
         $.get(`/barang/detail/${idBarang}`, function (data) {

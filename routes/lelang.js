@@ -64,12 +64,6 @@ router.post('/konfirmasi-lelang/:id_barang',requireLogin, async (req, res) => {
         WHERE id_barang = ?
       `, [hargalelang, id_barang]);
 
-      // await connection.query(`
-      //   UPDATE Lelang 
-      //   SET harga_lelang = ?, status_lelang = 'sedang lelang', waktu_mulai = ?, waktu_selesai = ?
-      //   WHERE id_barang = ?
-      // `, [hargalelang, waktu_mulai, waktu_selesai, id_barang]);
-
       await connection.query(`
         UPDATE Lelang 
         SET harga_lelang = ?, waktu_mulai = ?, waktu_selesai = ?

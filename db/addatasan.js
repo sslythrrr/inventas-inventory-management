@@ -26,7 +26,6 @@ db.connect(async (err) => {
   console.log('Connected to database');
 
   try {
-    // Create Atasan table if not exists
     const createTableSQL = `
       CREATE TABLE IF NOT EXISTS Atasan (
         id_atasan VARCHAR(10) PRIMARY KEY,
@@ -40,7 +39,6 @@ db.connect(async (err) => {
     await db.promise().query(createTableSQL);
     console.log('Atasan table created successfully');
 
-    // Add status_konfirmasi column to Lelang table if not exists
     const alterLelangSQL = `
       ALTER TABLE lelang 
       ADD COLUMN IF NOT EXISTS status_konfirmasi_atasan ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
@@ -52,11 +50,9 @@ db.connect(async (err) => {
     await db.promise().query(alterLelangSQL);
     console.log('Lelang table updated successfully');
 
-    // Generate password hash
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(newAtasan.password, salt);
 
-    // Check if atasan already exists
     const [existingAtasan] = await db.promise().query(
       'SELECT id_atasan FROM Atasan WHERE email = ?',
       [newAtasan.email]
